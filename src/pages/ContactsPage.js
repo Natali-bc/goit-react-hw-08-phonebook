@@ -21,6 +21,7 @@ class ContactsPage extends Component {
   componentDidMount() {
     this.props.onFetchContact();
   }
+
   render() {
     const { isLoading, isExists } = this.props;
     return (

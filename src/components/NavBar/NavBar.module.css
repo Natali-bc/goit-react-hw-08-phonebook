@@ -1,0 +1,14 @@
+.link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  color: #00070a;
+}
+
+.link:hover {
+  color: #c547bb;
+}
+nav {
+  font-weight: 700px;
+  background-color: rgb(126, 44, 92);
+}

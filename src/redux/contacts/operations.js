@@ -11,22 +11,28 @@ import {
   removeContactError,
 } from './actions';
 
+axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
+
 const addContact = contact => dispatch => {
   dispatch(addContactRequest());
 
   axios
-    .post('http://localhost:2000/contacts', { ...contact })
+    .post('/contacts', { ...contact })
     .then(({ data }) => {
       dispatch(addContactSuccess(data));
     })
     .catch(error => dispatch(addContactError(error)));
 };
 
-const fetchContact = () => dispatch => {
+const fetchContact = () => (dispatch, getState) => {
+  const {
+    auth: { token: persistedToken },
+  } = getState();
+  axios.defaults.headers.common.Authorization = `Bearer ${persistedToken}`;
   dispatch(fetchContactRequest());
 
   axios
-    .get('http://localhost:2000/contacts')
+    .get('/contacts')
     .then(({ data }) => {
       dispatch(fetchContactSuccess(data));
     })
@@ -37,7 +43,7 @@ const removeContact = id => dispatch => {
   dispatch(removeContactRequest());
 
   axios
-    .delete(`http://localhost:2000/contacts/${id}`)
+    .delete(`/contacts/${id}`)
     .then(() => {
       dispatch(removeContactSuccess(id));
     })

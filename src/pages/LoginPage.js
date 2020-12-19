@@ -2,17 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { logIn } from '../redux/auth/authOperations';
 import styles from '../components/ContactForm/ContactForm.module.css';
-
-// const styles = {
-//   form: {
-//     width: 320,
-//   },
-//   label: {
-//     display: 'flex',
-//     flexDirection: 'column',
-//     padding: 4,
-//   },
-// };
+import style from '../App.module.css';
 
 class LoginPage extends Component {
   state = {
@@ -38,6 +28,7 @@ class LoginPage extends Component {
           <label>
             <span className={styles.inputTitle}>Email</span>
             <input
+              type="email"
               name="email"
               value={email}
               onChange={this.handleChange}
@@ -49,6 +40,7 @@ class LoginPage extends Component {
           <label>
             <span className={styles.inputTitle}>Password</span>
             <input
+              type="password"
               name="password"
               value={password}
               onChange={this.handleChange}

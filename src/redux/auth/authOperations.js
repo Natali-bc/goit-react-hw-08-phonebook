@@ -18,10 +18,10 @@ axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
 
 const token = {
   set(token) {
-    axios.defaults.headers.common.Autorization = `Bearer ${token}`;
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
-    axios.defaults.headers.common.Autorization = '';
+    axios.defaults.headers.common.Authorization = '';
   },
 };
 
@@ -67,7 +67,6 @@ const getCurrentUser = () => (dispatch, getState) => {
   if (!persistedToken) {
     return;
   }
-
   token.set(persistedToken);
   dispatch(getCurrentUserRequest());
 

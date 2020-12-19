@@ -1,34 +1,25 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { routes } from '../../routes';
+import { isAuthenticated } from '../../redux/auth/authSelectors';
+import { connect } from 'react-redux';
+import styles from '../NavBar/NavBar.module.css';
 
-const styles = {
-  link: {
-    display: 'inline-block',
-    textDecoration: 'none',
-    padding: 12,
-    fontWeight: 700,
-    color: '#2A363B',
-  },
-  activeLink: {
-    color: '#E84A5F',
-  },
-};
-
-const NavBar = () => (
+const NavBar = ({ isAuthenticated }) => (
   <nav>
-    {routes.map(route => (
-      <NavLink
-        exact={route.exact}
-        key={route.label}
-        to={route.path}
-        style={styles.link}
-        activeStyle={styles.activeLink}
-      >
-        {route.label}
+    <NavLink to="/" exact className={styles.link}>
+      Home
+    </NavLink>
+
+    {isAuthenticated && (
+      <NavLink to="/contacts" exact className={styles.link}>
+        Contacts
       </NavLink>
-    ))}
+    )}
   </nav>
 );
 
-export default NavBar;
+const mapStateToProps = state => ({
+  isAuthenticated: isAuthenticated(state),
+});
+
+export default connect(mapStateToProps)(NavBar);

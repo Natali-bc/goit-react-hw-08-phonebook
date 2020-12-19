@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+import { Redirect } from 'react-router-dom';
 
 const routesPath = {
   home: '/',
@@ -12,7 +13,7 @@ const routes = [
     path: routesPath.home,
     label: 'Home',
     exact: true,
-    component: lazy(() => import('./pages/HomePage')),
+    component: () => <Redirect to={routesPath.login} />,
     restricted: false,
     private: false,
   },

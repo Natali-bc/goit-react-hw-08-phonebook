@@ -4,6 +4,7 @@ body {
   background-color: rgb(207, 187, 187);
   font-size: large;
   font-style: italic;
+  padding-bottom: 50px;
 }
 .appear {
   opacity: 0;
@@ -13,4 +14,15 @@ body {
   opacity: 1;
   transform: translateY(0);
   transition: all 500ms linear;
+}
+
+form {
+  width: 320px;
+  margin: 0 auto;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+  margin-bottom: 5px;
 }
